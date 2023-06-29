@@ -24,7 +24,7 @@
             @foreach($todos as $todo)
             <li class="list-group-item">
                 @if($todo->status === 'pending')
-                <span class="badge bg-primary">Pending</span>
+                <a href="{{ route('updatetodo', $todo->id) }}" class="btn btn-primary">✓</a>
                 @endif
 
                 @if($todo->status === 'complete')
@@ -32,6 +32,8 @@
                 @endif
                 
                 {{ $todo->content }}
+
+                <a href="{{ route('deletetodo', $todo->id) }}" class="float-end text-danger">x</a>
             </li>
             @endforeach
         </ul>

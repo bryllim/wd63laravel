@@ -23,4 +23,21 @@ class TodoController extends Controller
 
         return redirect()->route('home')->with('success', "Todo added successfully!");
     }
+
+    public function update($id){
+
+        $todo = Todo::find($id);
+        $todo->status = "complete";
+        $todo->save();
+
+        return redirect()->route('home')->with('success', "Todo marked as complete!");
+    }
+
+    public function delete($id){
+
+        $todo = Todo::find($id);
+        $todo->delete();
+
+        return redirect()->route('home')->with('success', "Todo deleted!");
+    }
 }
